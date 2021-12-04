@@ -1,0 +1,328 @@
+@font-face {
+  font-family: "Ruhl";
+  src: url(./fonts/FrankRuhlLibre-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Ruhl-medium";
+  src: url(./fonts/FrankRuhlLibre-Medium.ttf);
+}
+
+@font-face {
+  font-family: "Vibes";
+  src: url(./fonts/GreatVibes-Regular.ttf);
+}
+
+/* Global styling*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  --header1: calc(2rem + 1vw);
+  --header2: calc(3.5rem + 1vw);
+  --header3: calc(3rem + 1vw);
+  --header4: calc(2.4rem + 1vw);
+  --text: calc(1.5rem + 1vw);
+  --big: calc(2.4rem + 1vw);
+  --special-color: #906272;
+  --background-color: #414141;
+  --gray-text: #525252;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: var(--header1);
+}
+li,
+button,
+label,
+input,
+p,
+a {
+  font-size: var(--text);
+}
+h2 {
+  font-size: var(--header2);
+}
+h3 {
+  font-size: var(--header3);
+}
+h4,
+h5 {
+  font-size: var(--header4);
+}
+
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+body {
+  font-family: "Ruhl";
+  animation: opening 1s ease-in-out;
+}
+
+h1 {
+  font-family: "Vibes";
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*NavBar*/
+
+.main-head {
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  position: relative; /*to fix box shadow over image*/
+  z-index: 2;
+}
+
+nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  min-height: 10vh;
+  padding: 2rem 0rem;
+}
+
+nav h1 {
+  flex-grow: 1;
+  flex-basis: 20rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-basis: 20rem;
+}
+
+ul li {
+  flex-basis: 20rem;
+}
+
+.menu-check{
+  display: none;
+}
+
+/*hero section*/
+
+.hero {
+  min-height: 90vh;
+  width: 95%;
+  margin: 0 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden; /*to hide left-right scrolling and extra plant2 image*/
+}
+
+.hero-intro {
+  flex: 2 1 40rem;
+}
+
+.hero-intro a {
+  border: 1px solid black;
+  padding: 2rem 4rem;
+}
+
+.hero-intro p {
+  padding: 5rem;
+}
+
+.hero-image {
+  flex: 1 1 40rem;
+  background: linear-gradient(#dad8dd, #dad1d4);
+  position: relative;
+  z-index: 1; /*makes plant to come over the background color but behind the image*/
+}
+
+.hero-elena {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plant {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  z-index: -1;
+  animation: plant 1s ease-in-out 1s forwards,
+    /*forwards makes animation ends at finish position*/ plant-shake 2s infinite
+      ease-in 2s alternate-reverse; /*alternate-reverse makes plants to start animation where it finished earlier*/
+  transform-origin: bottom;
+  transform: translateY(10%) rotatex(-90deg) rotateZ(10deg); /* this will make animation start from this position*/
+  max-height: 80%;
+}
+
+.plant2 {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+  z-index: -1;
+}
+
+/*About Section*/
+
+.about{
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  
+}
+
+.about-image h2{
+  position: absolute;
+  top: 10%;
+  left:25%;
+  letter-spacing: 1rem;
+}
+
+.about-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-image{
+  flex: 2 1 20rem;
+}
+
+.about-text{
+  padding: 5rem;
+  flex: 1 1 20rem;
+  color: white;
+}
+
+.about-text h1{
+  font-size: var(--header1);
+}
+
+.about-text h2{
+  font-size: var(--header2);
+}
+
+.about-text p{
+  font-size: var(--text);
+  padding: 4rem 0;
+}
+
+@keyframes opening {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes plant {
+  from {
+    transform: translateY(10%) rotatex(-90deg) rotateZ(10deg);
+  }
+
+  to {
+    transform: translateY(0) rotatex(0deg) rotateZ(0deg);
+  }
+}
+
+@keyframes plant-shake {
+  from {
+    transform: rotateZ(-15deg);
+  }
+
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+
+@media screen and (max-width: 842px) {
+  .hero{
+    width: 100%;
+  }
+  
+  .burger {
+    position: relative;
+  }
+
+  .burger span {
+    padding: 0.2rem 2rem; /*to display each span*/
+    margin: 0.5rem 0rem; /*to give gap b/w each span*/
+    background-color: var(--gray-text);
+    display: block; /*this will put span obove each other*/
+    transition: 1s ease-out;
+  }
+
+  .nav-links {
+    background-color: var(--background-color);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%; /* to make sidebar come from right hand side. This will push the container from left side*/
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* transform: translate(-100%); */ /*will make sidebar come from left side*/
+    transition:1s ease-out;
+  }
+
+  .nav-links a {
+    color: white;
+    font-size: var(--header2);
+  }
+
+  .menu-check {
+    display: block;
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    top: 50%;
+    right: 5%;
+    opacity: 0;
+    z-index: 100;
+    cursor: pointer;
+    transform: translate(5%, -50%);
+  }
+
+  .menu-check:checked + .nav-links {
+    /*+ is used to apply condition on nav-links which is places just below in html elements*/
+    
+    transform: translate(-100%);
+  }
+
+  .menu-check:checked ~ .burger span{
+    background-color: white;
+  }
+
+  .menu-check:checked ~ .burger span:nth-child(1){
+    transform: rotateZ(45deg) translateY(300%);
+  }
+
+  .menu-check:checked ~ .burger span:nth-child(2){
+    opacity: 0;
+  }
+
+  .menu-check:checked ~ .burger span:nth-child(3){
+    transform: rotateZ(-45deg) translateY(-300%);
+  }
+
+}
